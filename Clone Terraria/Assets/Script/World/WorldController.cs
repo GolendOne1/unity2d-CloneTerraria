@@ -6,7 +6,7 @@ using Assets.Script.Character.Movement;
 
 namespace Assets.Script
 {
-    class World : MonoBehaviour
+    class WorldController : MonoBehaviour
     {
         public Terrain terrain;
         public Player     player;
