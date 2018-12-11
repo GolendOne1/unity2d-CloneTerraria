@@ -11,7 +11,7 @@ namespace Assets.Script
         public Terrain terrain;
 
         public Player     player;
-        public GameObject playerEntity;
+        //public GameObject playerEntity;
 
         public MainCamera mainCamera;
 
@@ -20,19 +20,19 @@ namespace Assets.Script
             terrain = new Plane();
             createPlayer();
 
-            mainCamera = new MainCamera(gameObject ,playerEntity);
+            mainCamera = new MainCamera(gameObject ,player.Entity);
         }
         private void createPlayer()
         {
-            playerEntity = Resources.Load<GameObject>("Prefab/MainCharacter");
-            playerEntity = Instantiate(playerEntity);
-            playerEntity.transform.name = "MainCharacter";
+            //playerEntity = Resources.Load<GameObject>("Prefab/MainCharacter");
+            //playerEntity = Instantiate(playerEntity);
+            //playerEntity.transform.name = "MainCharacter";
 
             List<InteractBehavior> interactBehavior = new List<InteractBehavior>();
             interactBehavior.Add(new Destory(gameObject.GetComponent<Camera>() ,terrain));
 
-            player = new Character.Player(new PhysicsMovement(playerEntity) ,interactBehavior);
-            playerEntity.GetComponent<UnityCharacter>().mainCharacter = player;
+            player = new Player(interactBehavior);
+            //playerEntity.GetComponent<PlayerController>().mainCharacter = player;
         }
 
         void LateUpdate()
