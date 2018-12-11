@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Script.Character
+namespace Assets.Script.Character.Movement
 {
     class PhysicsConstants
     {
         public const float MAXSPEED    = 8;
         public const int   MAXHEIGHT   = 6;
         public const float HEIGHT      = 4;  //4格高
-        public const float FALLINGTIME = 1f; //跳起+落下的時間
+        public const float FALLINGTIME = 0.5f; //跳起+落下的時間
 
         private float heightOffset;
         private float velocityInit;

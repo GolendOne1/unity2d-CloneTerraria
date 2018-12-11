@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Script.Character.Movement
 {
@@ -8,7 +6,7 @@ namespace Assets.Script.Character.Movement
     {
         protected Vector2 velocity;
         protected Rigidbody2D rb2d;
-        public MoveBehavior( GameObject character )
+        public MoveBehavior(GameObject character)
         {
             rb2d = character.GetComponent<Rigidbody2D>();
         }
