@@ -31,7 +31,7 @@ namespace Assets.Script.Character
                     preBlock = block;
                 }
 
-                ItemEntity dropItem = block.beDestory( computeDestoryDamage() );
+                Item dropItem = block.beDestory( computeDestoryDamage() );
                 if ( dropItem != null )
                 {
                     //放進背包

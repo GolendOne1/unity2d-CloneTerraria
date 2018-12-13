@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
 namespace Assets.Script.BlockAndItem
 {
@@ -17,7 +16,10 @@ namespace Assets.Script.BlockAndItem
         protected int    stack;
 
         protected bool   breakable;
-        protected float  durability;      
+        protected float  durability;
+
+        private static string imagePath = "tempImage/";
+        private GameObject gameObject;
 
         public Item(string name)
         {
@@ -38,6 +40,20 @@ namespace Assets.Script.BlockAndItem
             id[1] = blockDictionary.Dictionary[name].subNum;
             //----------------------
         }
+        public Item(string objectName ,Vector2 position ,string name) : this(name)
+        {
+            gameObject = new GameObject(objectName);
+
+            gameObject.AddComponent<SpriteRenderer>();
+            gameObject.transform.position = position;
+
+            gameObject.layer = LayerMask.NameToLayer("Item");
+            gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(imagePath + name);
+
+            gameObject.AddComponent<BoxCollider2D>().size = new Vector2(1 ,1);
+            gameObject.SetActive(false);//先隱藏
+        }
+
         public int stackItem(int num)
         {              
             stack += num;
@@ -49,6 +65,21 @@ namespace Assets.Script.BlockAndItem
                 return remain;
             }
             else return 0;              
+        }
+        public bool beDestory()//temp
+        {
+            if ( Input.GetMouseButton(0) )//按下左鍵
+            {
+                durability -= 1 * Time.deltaTime;
+                Debug.Log(" durability: " + durability + "deltadurability: " + 1 * Time.deltaTime);//for test
+
+                if ( durability <= 0 )
+                {
+                    Debug.Log("tool break");//for test
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

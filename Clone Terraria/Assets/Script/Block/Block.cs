@@ -80,7 +80,7 @@ namespace Assets.Script.BlockAndItem
             return !( blockProperty.mainNum == blockDictionary.Dictionary["Air"].mainNum );
         }
 
-        public ItemEntity beDestory(float destroyDamage)
+        public Item beDestory(float destroyDamage)
         {
             if ( Input.GetMouseButton(0) )//按下左鍵
             {
@@ -93,7 +93,7 @@ namespace Assets.Script.BlockAndItem
                     string itemName = blockProperty.dropItem;
 
                     transformBlock();//也許不適合??
-                    return new ItemEntity(gameObject.name + " " + itemName ,Vector2.zero ,itemName);
+                    return new Item(gameObject.name + " " + itemName ,Vector2.zero ,itemName);
                 }
             }
             else if ( Input.GetMouseButtonUp(0) )
