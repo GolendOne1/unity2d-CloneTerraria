@@ -11,7 +11,7 @@ namespace Assets.Script.Character
         private const  float DIRT_DESTORY_TIME = 0.6f;//摧毀一塊"泥土"所花的時間(秒)
 
         private float destroyDamage;
-        private BlockEntity preBlock;
+        private Block preBlock;
 
         public Destory( Camera mainCamera ,Terrain terrain ) : base(mainCamera ,terrain)
         {

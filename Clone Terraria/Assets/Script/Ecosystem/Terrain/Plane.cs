@@ -7,7 +7,7 @@ public class Plane : Terrain
 {
     public Plane( int width = 100 ,int maxHeight = 20 ,int minFloor = 20/*seaLevel*/ ) : base(width ,maxHeight ,minFloor)
     {
-        blockEntities = new BlockEntity[width * CEILING];//new BlockEntity[width * maxHeight];
+        blocks = new Block[width * CEILING];//new Block[width * maxHeight];
 
         Vector3 startPosition = new Vector3(-1.0f * width/2 ,0.0f) ;
         Vector3 endPosition   = new Vector3( 1.0f * width/2 ,0.0f);
@@ -28,9 +28,9 @@ public class Plane : Terrain
                 Vector2 pos = new Vector2(( startPosition + dir * interval * j ).x ,-i );
 
                 if ( i == 0 )
-                    blockEntities[( offset + i ) * width + j] = new BlockEntity(blockName ,pos ,"Grass");
+                    blocks[( offset + i ) * width + j] = new Block(blockName ,pos ,"Grass");
                 else if ( i <= 3 )
-                    blockEntities[( offset + i ) * width + j] = new BlockEntity(blockName ,pos ,"Dirt");
+                    blocks[( offset + i ) * width + j] = new Block(blockName ,pos ,"Dirt");
                 else
                 {
                     int n = UnityEngine.Random.Range(0, 100) % 2;
@@ -38,10 +38,10 @@ public class Plane : Terrain
                     switch ( n )
                     {
                         case 0:
-                            blockEntities[( offset + i ) * width + j] = new BlockEntity(blockName ,pos ,"Dirt");
+                            blocks[( offset + i ) * width + j] = new Block(blockName ,pos ,"Dirt");
                             break;
                         case 1:
-                            blockEntities[( offset + i ) * width + j] = new BlockEntity(blockName ,pos ,"Stone");
+                            blocks[( offset + i ) * width + j] = new Block(blockName ,pos ,"Stone");
                             break;
                     }
                 }
@@ -53,12 +53,12 @@ public class Plane : Terrain
         {
             for ( int j = 0 ; j < width ; j++ )
             {
-                if ( blockEntities[i * width + j] == null )
+                if ( blocks[i * width + j] == null )
                 {
                     blockName = string.Format("block({0} ,{1})" ,j ,CEILING / 2 - i);
                     Vector2 pos = new Vector2(( startPosition + dir * interval * j ).x ,CEILING/2 -i );
 
-                    blockEntities[i * width + j] = new BlockEntity(blockName ,pos ,"Air");
+                    blocks[i * width + j] = new Block(blockName ,pos ,"Air");
                 }
             }
         }

@@ -12,7 +12,7 @@ public abstract class Terrain
     protected int maxHeight;
     protected int minFloor;
 
-    protected BlockEntity[] blockEntities;
+    protected Block[] blocks;
 
     public int Width
     {
@@ -26,9 +26,9 @@ public abstract class Terrain
     {
         get{return minFloor;}
     }
-    public BlockEntity[] BlockEntities
+    public Block[] Blocks
     {
-        get {return blockEntities; }
+        get {return blocks; }
     }
 
     public Terrain( int width ,int maxHeight ,int minFloor = 256 )

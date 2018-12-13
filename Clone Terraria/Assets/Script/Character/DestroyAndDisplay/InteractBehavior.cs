@@ -12,7 +12,7 @@ namespace Assets.Script.Character
         private Camera  mainCamera;
         private Terrain terrain;
 
-        protected BlockEntity block;
+        protected Block block;
 
         public InteractBehavior( Camera mainCamera ,Terrain terrain )
         {
@@ -59,7 +59,7 @@ namespace Assets.Script.Character
             tilePosition.x = tilePosition.x + terrain.Width / 2;
 
             int index = (int)( tilePosition.x + tilePosition.y * terrain.Width );
-            block = terrain.BlockEntities[index];
+            block = terrain.Blocks[index];
         }
     }
 }
